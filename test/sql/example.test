@@ -1,0 +1,20 @@
+# name: test/sql/example.test
+# description: test example extension
+# group: [example]
+
+require example
+
+query I
+SELECT example_sum(i) FROM range(1,10) as r(i);
+----
+45
+
+query I
+SELECT example_templated_sum(i) FROM range(1,10) as r(i)
+----
+45
+
+query I
+SELECT example_concat(i ORDER BY i) FROM range(1,5) as r(i);
+----
+1.000000,2.000000,3.000000,4.000000
